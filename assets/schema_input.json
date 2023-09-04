@@ -7,30 +7,46 @@
     "items": {
         "type": "object",
         "properties": {
+            "patient": {
+                "type": "string",
+                "pattern": "^\\S+$",
+                "errorMessage": "Patient ID must be provided and cannot contain spaces",
+                "meta": ["patient"]
+            },
             "sample": {
                 "type": "string",
                 "pattern": "^\\S+$",
-                "errorMessage": "Sample name must be provided and cannot contain spaces"
+                "errorMessage": "Sample name must be provided and cannot contain spaces",
+                "meta": ["sample", "id"]
             },
-            "fastq_1": {
-                "type": "string",
-                "pattern": "^\\S+\\.f(ast)?q\\.gz$",
-                "errorMessage": "FastQ file for reads 1 must be provided, cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'"
-            },
-            "fastq_2": {
-                "errorMessage": "FastQ file for reads 2 cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'",
+            "sex": {
+                "errorMessage": "Sex cannot contain spaces",
+                "meta": ["sex"],
                 "anyOf": [
                     {
                         "type": "string",
-                        "pattern": "^\\S+\\.f(ast)?q\\.gz$"
+                        "pattern": "^\\S+$"
                     },
                     {
                         "type": "string",
                         "maxLength": 0
                     }
                 ]
+            },
+            "status": {
+                "type": "integer",
+                "errorMessage": "Status can only be 0 (normal) or 1 (tumor). Defaults to 0, if none is supplied.",
+                "meta": ["status"],
+                "default": "0",
+                "minimum": 0,
+                "maximum": 1
+            },
+            "mpileup": {
+                "type": "string",
+                "pattern": "^\\S+\\.mpileup.gz$",
+                "errorMessage": "Bgzip mpileup file"
             }
         },
-        "required": ["sample", "fastq_1"]
+        "required": ["sample","status","sex"]
     }
 }

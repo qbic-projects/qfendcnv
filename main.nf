@@ -14,9 +14,14 @@ nextflow.enable.dsl = 2
     GENOME PARAMETER VALUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
-
-params.fasta = WorkflowMain.getGenomeAttribute(params, 'fasta')
-
+params.cf_chrom_len          = WorkflowMain.getGenomeAttribute(params, 'cf_chrom_len')
+params.chr_dir               = WorkflowMain.getGenomeAttribute(params, 'chr_dir')
+params.dbsnp                 = WorkflowMain.getGenomeAttribute(params, 'dbsnp')
+params.dbsnp_tbi             = WorkflowMain.getGenomeAttribute(params, 'dbsnp_tbi')
+params.fasta                 = WorkflowMain.getGenomeAttribute(params, 'fasta')
+params.fasta_fai             = WorkflowMain.getGenomeAttribute(params, 'fasta_fai')
+params.intervals             = WorkflowMain.getGenomeAttribute(params, 'intervals')
+params.mappability           = WorkflowMain.getGenomeAttribute(params, 'mappability')
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     VALIDATE & PRINT PARAMETER SUMMARY
